@@ -11,6 +11,9 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest] # ubuntu-22.04
     steps:
+      - uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
     
       - name: Checkout
         uses: actions/checkout@v2

@@ -11,13 +11,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest] # ubuntu-22.04
     steps:
-      - uses: step-security/harden-runner@v1
-        with:
-          egress-policy: audit
-      
-      #- name: remove sudo
-      # run: sudo rm /etc/sudoers.d/runner
-        
+    
       - name: Checkout
         uses: actions/checkout@v2
 

@@ -1,6 +1,6 @@
 name: Node Build Test Release 
 on:
-  [workflow_dispatch, pull_request]
+  [workflow_dispatch]
    
 jobs:
   run:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-    name: Unit Tests
+    name: Unit-Tests
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-    name: Load Test
+    name: Load-Test
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
@@ -60,7 +60,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-    name: Release Verification
+    name: Release-Verification
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false

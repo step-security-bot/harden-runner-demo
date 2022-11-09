@@ -1,6 +1,6 @@
 name: Node workflow 
 on:
-  [workflow_dispatch, pull_request]
+  [workflow_dispatch]
    
 jobs:
   run:

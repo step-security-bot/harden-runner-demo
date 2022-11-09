@@ -1,0 +1,20 @@
+name: Node workflow no sudo
+on:
+  [workflow_dispatch]
+   
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-latest] # ubuntu-22.04
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@v2

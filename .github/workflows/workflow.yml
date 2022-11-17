@@ -15,19 +15,24 @@ jobs:
       extensions: xml, opcache, xdebug, pcov
       key: cache-v3
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791 # v2
 
       - name: Setup cache environment
         id: cache-env
-        uses: shivammathur/cache-extensions@develop
+        uses: shivammathur/cache-extensions@dc54f0353a6426b7feae713f9c75db167849dce0 # develop
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ${{ env.extensions }}
           key: ${{ env.key }}
 
       - name: Cache extensions
-        uses: actions/cache@v2
+        uses: actions/cache@937d24475381cd9c75ae6db12cb4e79714b926ed # v2
         with:
           path: ${{ steps.cache-env.outputs.dir }}
           key: ${{ steps.cache-env.outputs.key }}
